@@ -4,39 +4,90 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:p="http://primefaces.org/ui">
+    
 <h:head>
     <title>Lista de Tarefas</title>
+    <h:outputStylesheet library="css" name="styles.css" />
 </h:head>
+
 <h:body>
 
-	<h2>Lista de Tarefas</h2>
-	
-	<h:dataTable value="#{gerenciadorTarefasBean.tarefas}" var="tarefa">
-		<h:column>
-			<f:facet name="header">ID</f:facet>
-			#{tarefa.id}
-		</h:column>
+	<h:form class="form">
+
+		<fieldset>
+			<legend>Dados da Tarefa</legend>
 		
-		<h:column>
-			<f:facet name="header">Título</f:facet>
-			#{tarefa.titulo}
-		</h:column>
+			<p:growl id="growl" life="2000" />
 		
-		<h:column>
-			<f:facet name="header">Descrição</f:facet>
-			#{tarefa.descricao}
-		</h:column>
+			<p:inputText value="#{gerenciadorTarefasBean.tarefa.id}" type="hidden" />
+			
+			<div class="form-div">
+				<span class="ui-float-label">
+					<p:inputText id="titulo" value="#{gerenciadorTarefasBean.tarefa.titulo}" />
+			       	<p:outputLabel for="@previous" value="Título" />
+		       	</span>
+			</div>
+			
+			<div class="form-div">
+				<p:selectOneMenu id="prioridade" value="#{gerenciadorTarefasBean.tarefa.prioridade}"
+					style="width:125px">
+					<f:selectItem itemLabel="Baixa" itemValue="Baixa" />
+					<f:selectItem itemLabel="Média" itemValue="Média" />
+					<f:selectItem itemLabel="Alta" itemValue="Alta" />
+					<f:facet name="footer">
+						<p:separator />
+						<h:outputText value="3 prioridades" style="font-weight:bold;" />
+					</f:facet>
+				</p:selectOneMenu>
+			</div>
+			
+			<div>
+				<p:calendar id="data-limite" value="#{gerenciadorTarefasBean.tarefa.dataLimite}" />
+			</div>
+			
+			<div class="form-div">
+				<p:inputTextarea rows="5" cols="30" counter="display" maxlength="200" counterTemplate="{0} caracteres restantes." autoResize="false"
+					value="#{gerenciadorTarefasBean.tarefa.descricao}" />
+				<br />
+				<h:outputText id="display" />
+			</div>
+
+			<div class="form-div">
+    			<p:commandButton value="Salvar" id="salvar-tarefa" update="@all" action="#{gerenciadorTarefasBean.salvarTarefa}" style="margin-right:20px;" styleClass="ui-priority-primary" />
+    		</div>
+    		
+    	</fieldset>
+    		
+		<h2>Lista de Tarefas</h2>
 		
-		<h:column>
-			<f:facet name="header">Prioridade</f:facet>
-			#{tarefa.prioridade}
-		</h:column>
-		
-		<h:column>
-			<f:facet name="header">Data Limite</f:facet>
-			#{tarefa.dataLimite}
-		</h:column>
-	</h:dataTable>
+		<h:dataTable value="#{gerenciadorTarefasBean.tarefas}" var="tarefa" id="tarefas">
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+				#{tarefa.id}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Título</f:facet>
+				#{tarefa.titulo}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Descrição</f:facet>
+				#{tarefa.descricao}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Prioridade</f:facet>
+				#{tarefa.prioridade}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Data Limite</f:facet>
+				#{tarefa.dataLimite}
+			</h:column>
+		</h:dataTable>
+			
+    </h:form>
 	
 </h:body>
 </html>

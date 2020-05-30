@@ -7,10 +7,10 @@ public class Tarefa {
 	private Integer id;
 	private String titulo;
 	private String descricao;
-	private int prioridade;
+	private String prioridade;
 	private Date dataLimite;
 	
-	public Tarefa(Integer id, String titulo, String descricao, int prioridade, Date dataLimite) {
+	public Tarefa(Integer id, String titulo, String descricao, String prioridade, Date dataLimite) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
@@ -37,10 +37,10 @@ public class Tarefa {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public int getPrioridade() {
+	public String getPrioridade() {
 		return prioridade;
 	}
-	public void setPrioridade(int prioridade) {
+	public void setPrioridade(String prioridade) {
 		this.prioridade = prioridade;
 	}
 	public Date getDataLimite() {

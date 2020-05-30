@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import com.capgemini.model.Tarefa;
 
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class GerenciadorTarefasBean {
 
 	List<Tarefa> tarefas;
@@ -20,11 +22,26 @@ public class GerenciadorTarefasBean {
 		tarefas = new ArrayList<>();
 		
 		//adicionando algumas tarefas para teste
-		tarefas.add(new Tarefa(1, "Titulo 1", "Descricao 1", 1, new Date()));
-		tarefas.add(new Tarefa(2, "Titulo 2", "Descricao 2", 1, new Date()));
+		tarefas.add(new Tarefa(1, "Titulo 1", "Descricao 1", "Baixa", new Date()));
+		tarefas.add(new Tarefa(2, "Titulo 2", "Descricao 2", "Alta", new Date()));
 		
-		tarefa = new Tarefa(3, "", "", 1, new Date());
+		tarefa = new Tarefa((tarefas.size() + 1), "", "", "Média", new Date());
 	}
+	
+	public void novaTarefa() {
+		tarefa = new Tarefa((tarefas.size() + 1), "", "", "Média", new Date());
+	}
+	
+	public void salvarTarefa() {
+		tarefas.add(tarefa);
+		novaTarefa();
+		addMessage("Tarefa salva!");
+	}
+	
+	public void addMessage(String summary) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, null);
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
 
 	public List<Tarefa> getTarefas() {
 		return tarefas;
