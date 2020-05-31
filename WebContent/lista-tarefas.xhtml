@@ -85,6 +85,12 @@
 				<f:facet name="header">Data Limite</f:facet>
 				#{tarefa.dataLimite}
 			</h:column>
+			
+			<h:column>
+				<p:commandLink id="apagar" update="@all" action="#{gerenciadorTarefasBean.apagarTarefa(tarefa)}" style="margin-right:20px;">
+        			<h:outputText value="Apagar" />
+    			</p:commandLink>
+			</h:column>
 		</h:dataTable>
 			
     </h:form>

@@ -50,4 +50,10 @@ public class Tarefa {
 		this.dataLimite = dataLimite;
 	}
 
+	@Override
+	public String toString() {
+		return "Tarefa [id=" + id + ", titulo=" + titulo + ", descricao=" + descricao + ", prioridade=" + prioridade
+				+ ", dataLimite=" + dataLimite + "]";
+	}
+
 }

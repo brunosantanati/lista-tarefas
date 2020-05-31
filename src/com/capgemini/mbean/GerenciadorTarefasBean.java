@@ -15,27 +15,36 @@ import com.capgemini.model.Tarefa;
 @SessionScoped
 public class GerenciadorTarefasBean {
 
-	List<Tarefa> tarefas;
-	Tarefa tarefa;
+	private List<Tarefa> tarefas;
+	private Tarefa tarefa;
+	private static int contador;
 	
 	public GerenciadorTarefasBean() {
+
 		tarefas = new ArrayList<>();
 		
 		//adicionando algumas tarefas para teste
 		tarefas.add(new Tarefa(1, "Titulo 1", "Descricao 1", "Baixa", new Date()));
 		tarefas.add(new Tarefa(2, "Titulo 2", "Descricao 2", "Alta", new Date()));
 		
-		tarefa = new Tarefa((tarefas.size() + 1), "", "", "Média", new Date());
+		contador = tarefas.size();
+		
+		tarefa = new Tarefa(++contador, "", "", "Média", new Date());
 	}
 	
 	public void novaTarefa() {
-		tarefa = new Tarefa((tarefas.size() + 1), "", "", "Média", new Date());
+		tarefa = new Tarefa(++contador, "", "", "Média", new Date());
 	}
 	
 	public void salvarTarefa() {
 		tarefas.add(tarefa);
 		novaTarefa();
 		addMessage("Tarefa salva!");
+	}
+	
+	public void apagarTarefa(Tarefa tarefa) {
+		tarefas.remove(tarefa);
+		addMessage("Tarefa apagada!");
 	}
 	
 	public void addMessage(String summary) {
