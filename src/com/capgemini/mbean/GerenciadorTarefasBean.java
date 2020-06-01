@@ -29,17 +29,30 @@ public class GerenciadorTarefasBean {
 		
 		contador = tarefas.size();
 		
-		tarefa = new Tarefa(++contador, "", "", "Média", new Date());
+		tarefa = new Tarefa(null, "", "", "Média", new Date());
 	}
 	
 	public void novaTarefa() {
-		tarefa = new Tarefa(++contador, "", "", "Média", new Date());
+		tarefa = new Tarefa(null, "", "", "Média", new Date());
 	}
 	
 	public void salvarTarefa() {
-		tarefas.add(tarefa);
+		
+		if(tarefa.getId() == null) {			
+			tarefa.setId(++contador);
+			tarefas.add(tarefa);
+		}else {
+			//As linhas abaixo funcionam, mas sao desnecessarias
+			//int index = tarefas.indexOf(tarefa);
+			//tarefas.set(index, tarefa);
+		}
+		
 		novaTarefa();
 		addMessage("Tarefa salva!");
+	}
+	
+	public void editarTarefa(Tarefa tarefa) {
+		this.tarefa = tarefa;
 	}
 	
 	public void apagarTarefa(Tarefa tarefa) {

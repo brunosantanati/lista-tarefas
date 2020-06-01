@@ -87,6 +87,12 @@
 			</h:column>
 			
 			<h:column>
+				<p:commandLink id="editar" update="@all" action="#{gerenciadorTarefasBean.editarTarefa(tarefa)}" style="margin-right:20px;">
+        			<h:outputText value="Editar" />
+    			</p:commandLink>
+			</h:column>
+			
+			<h:column>
 				<p:commandLink id="apagar" update="@all" action="#{gerenciadorTarefasBean.apagarTarefa(tarefa)}" style="margin-right:20px;">
         			<h:outputText value="Apagar" />
     			</p:commandLink>
