@@ -1,0 +1,12 @@
+CREATE DATABASE lista_tarefas;
+
+USE lista_tarefas;
+
+CREATE TABLE `tarefa` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `titulo` varchar(45) NOT NULL,
+    `descricao` varchar(45) NOT NULL,
+    `prioridade` varchar(45) NOT NULL,
+    `data_limite` date NOT NULL,
+    PRIMARY KEY (`id`)
+);

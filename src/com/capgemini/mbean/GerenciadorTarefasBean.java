@@ -1,6 +1,5 @@
 package com.capgemini.mbean;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -9,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import com.capgemini.dao.TarefaDao;
 import com.capgemini.model.Tarefa;
 
 @ManagedBean
@@ -17,18 +17,9 @@ public class GerenciadorTarefasBean {
 
 	private List<Tarefa> tarefas;
 	private Tarefa tarefa;
-	private static int contador;
 	
 	public GerenciadorTarefasBean() {
-
-		tarefas = new ArrayList<>();
-		
-		//adicionando algumas tarefas para teste
-		tarefas.add(new Tarefa(1, "Titulo 1", "Descricao 1", "Baixa", new Date()));
-		tarefas.add(new Tarefa(2, "Titulo 2", "Descricao 2", "Alta", new Date()));
-		
-		contador = tarefas.size();
-		
+		tarefas = TarefaDao.getTarefas();		
 		tarefa = new Tarefa(null, "", "", "Média", new Date());
 	}
 	
@@ -39,16 +30,16 @@ public class GerenciadorTarefasBean {
 	public void salvarTarefa() {
 		
 		if(tarefa.getId() == null) {			
-			tarefa.setId(++contador);
-			tarefas.add(tarefa);
+			TarefaDao.salvar(tarefa);
+			addMessage("Tarefa salva!");
 		}else {
-			//As linhas abaixo funcionam, mas sao desnecessarias
-			//int index = tarefas.indexOf(tarefa);
-			//tarefas.set(index, tarefa);
+			TarefaDao.atualizar(tarefa);
+			addMessage("Tarefa atualizada!");
 		}
 		
+		tarefas = TarefaDao.getTarefas();
+		
 		novaTarefa();
-		addMessage("Tarefa salva!");
 	}
 	
 	public void editarTarefa(Tarefa tarefa) {
@@ -56,7 +47,8 @@ public class GerenciadorTarefasBean {
 	}
 	
 	public void apagarTarefa(Tarefa tarefa) {
-		tarefas.remove(tarefa);
+		TarefaDao.apagar(tarefa.getId());
+		tarefas = TarefaDao.getTarefas();
 		addMessage("Tarefa apagada!");
 	}
 	
