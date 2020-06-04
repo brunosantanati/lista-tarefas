@@ -1,3 +1,65 @@
+body{
+	font-family: 'Titillium Web', sans-serif;
+}
+
 .form .form-div{
 	margin: 15px 0px;
+}
+
+.header{
+	background-image:url(#{request.contextPath}/resources/img/logo.jpg);
+	background-position: top 0px right 20px;
+	background-repeat: no-repeat;
+	background-size: 150px 150px;
+	height: 150px;
+	margin-top: 0px;
+}
+
+header .titulo{
+	margin-left: auto;
+	margin-right: auto;
+	width: 426px;
+	margin-top: 0px;
+	padding-top: 55px;
+	font-family: 'Orbitron', sans-serif;
+}
+
+a{
+	text-decoration: none;
+}
+
+a:link {
+  color: #000;
+}
+
+a:visited {
+  color: #000;
+}
+
+a:hover {
+  color: #4682B4;
+}
+
+a:active {
+  color: #4682B4;
+}
+
+fieldset{
+	border: 1px solid #C0C0C0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #C0C0C0;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
