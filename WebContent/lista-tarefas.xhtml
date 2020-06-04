@@ -26,17 +26,20 @@
 				<legend>Dados da Tarefa</legend>
 			
 				<p:growl id="growl" life="2000" />
+				
+				<p:messages id="msgs" />
 			
 				<p:inputText value="#{gerenciadorTarefasBean.tarefa.id}" type="hidden" />
 				
 				<div class="form-div">
-					<span class="ui-float-label">
-						<p:inputText id="titulo" value="#{gerenciadorTarefasBean.tarefa.titulo}" />
-				       	<p:outputLabel for="@previous" value="Título" />
-			       	</span>
+					<h:outputLabel for="titulo" value="Título:" class="label" />
+					<p:inputText id="titulo" value="#{gerenciadorTarefasBean.tarefa.titulo}" required="true" label="Título">
+						<f:validateLength minimum="3" />
+					</p:inputText>
 				</div>
 				
 				<div class="form-div">
+					<h:outputLabel for="prioridade" value="Prioridade:" class="label" />
 					<p:selectOneMenu id="prioridade" value="#{gerenciadorTarefasBean.tarefa.prioridade}"
 						style="width:125px">
 						<f:selectItem itemLabel="Baixa" itemValue="Baixa" />
@@ -50,12 +53,14 @@
 				</div>
 				
 				<div>
-					<p:calendar id="data-limite" value="#{gerenciadorTarefasBean.tarefa.dataLimite}" />
+					<h:outputLabel for="data-limite" value="Data Limite:" class="label" />
+					<p:calendar id="data-limite" value="#{gerenciadorTarefasBean.tarefa.dataLimite}" required="true" label="Data Limite" />
 				</div>
 				
 				<div class="form-div">
-					<p:inputTextarea rows="5" cols="30" counter="display" maxlength="200" counterTemplate="{0} caracteres restantes." autoResize="false"
-						value="#{gerenciadorTarefasBean.tarefa.descricao}" />
+					<h:outputLabel for="descricao" value="Descrição:" class="label" />
+					<p:inputTextarea id="descricao" rows="5" cols="30" counter="display" maxlength="200" counterTemplate="{0} caracteres restantes." autoResize="false"
+						value="#{gerenciadorTarefasBean.tarefa.descricao}" required="true" label="Descrição" />
 					<br />
 					<h:outputText id="display" />
 				</div>
@@ -91,17 +96,19 @@
 				
 				<h:column>
 					<f:facet name="header">Data Limite</f:facet>
-					#{tarefa.dataLimite}
+					<h:outputText value="#{tarefa.dataLimite}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+         			</h:outputText>
 				</h:column>
 				
 				<h:column>
-					<p:commandLink id="editar" update="@all" action="#{gerenciadorTarefasBean.editarTarefa(tarefa)}" style="margin-right:20px;">
+					<p:commandLink id="editar" update="@all" action="#{gerenciadorTarefasBean.editarTarefa(tarefa)}" style="margin-right:20px;" process="@this">
 	        			<h:outputText value="Editar" />
 	    			</p:commandLink>
 				</h:column>
 				
 				<h:column>
-					<p:commandLink id="apagar" update="@all" action="#{gerenciadorTarefasBean.apagarTarefa(tarefa)}" style="margin-right:20px;">
+					<p:commandLink id="apagar" update="@all" action="#{gerenciadorTarefasBean.apagarTarefa(tarefa)}" style="margin-right:20px;" immediate="true">
 	        			<h:outputText value="Apagar" />
 	    			</p:commandLink>
 				</h:column>

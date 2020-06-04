@@ -6,6 +6,11 @@ body{
 	margin: 15px 0px;
 }
 
+.form .label{
+	display: block;
+	font-weight:bold;
+}
+
 .header{
 	background-image:url(#{request.contextPath}/resources/img/logo.jpg);
 	background-position: top 0px right 20px;
