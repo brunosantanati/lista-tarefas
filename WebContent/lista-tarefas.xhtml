@@ -54,7 +54,9 @@
 				
 				<div>
 					<h:outputLabel for="data-limite" value="Data Limite:" class="label" />
-					<p:calendar id="data-limite" value="#{gerenciadorTarefasBean.tarefa.dataLimite}" required="true" label="Data Limite" />
+					<p:calendar id="data-limite" value="#{gerenciadorTarefasBean.tarefa.dataLimite}" required="true" label="Data Limite">
+						<f:validator validatorId="com.capgemini.validacao.DataLimiteValidator" />
+					</p:calendar>
 				</div>
 				
 				<div class="form-div">
