@@ -2,6 +2,10 @@ body{
 	font-family: 'Titillium Web', sans-serif;
 }
 
+.form{
+	margin-top: 20px;
+}
+
 .form .form-div{
 	margin: 15px 0px;
 }
@@ -27,6 +31,50 @@ header .titulo{
 	margin-top: 0px;
 	padding-top: 55px;
 	font-family: 'Orbitron', sans-serif;
+}
+
+.menu{
+	border-bottom: 2px solid #959393;
+	height: 49px;
+}
+
+.menu ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.menu ul li {
+	float: left;
+	position: relative;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: #959393;
+}
+
+.menu ul li a{
+	display: block;
+	text-decoration: none;
+	padding: 12px 0;
+	margin-right: 10px;
+	border-bottom: 4px solid #fff;
+}
+
+.menu ul li a:link {
+  color: #fff;
+}
+
+.menu ul li a:visited {
+  color: #fff;
+}
+
+.menu ul li a:hover {
+  color: #e4e2e2;
+}
+
+.menu ul li a:active {
+  color: #fff;
 }
 
 a{
