@@ -68,3 +68,33 @@ th, td {
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
+
+.container{
+	background-image:url(#{request.contextPath}/resources/img/fundo-binario.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	margin-top: 0px;
+	background-color: hsla(0,0%,100%,0.91);
+    background-blend-mode: overlay;
+    height: 475px;
+}
+
+.eu{
+	float: left;
+	margin: 10px 30px 0px 80px;
+}
+
+.eu img{
+	border-radius: 20px;
+	border: 1px solid #000;
+}
+
+.dados-sobre-mim{
+	margin: 10px 0px;
+	padding: 15px 10px;
+}
+
+.dados-sobre-mim .titulo{
+	font-weight: bold;
+}
