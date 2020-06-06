@@ -13,6 +13,8 @@ public class ConexaoFactory {
 		 
 		try {
 		 
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
 		    Connection conexao = DriverManager.getConnection(bdUrl, usuario, senha);
 		 
 		    if (conexao != null) {
@@ -21,7 +23,7 @@ public class ConexaoFactory {
 		    
 		    return conexao;
 		    
-		} catch (SQLException ex) {
+		} catch (SQLException | ClassNotFoundException ex) {
 		    ex.printStackTrace();
 		    return null;
 		}
