@@ -4,5 +4,29 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
     version="2.2">
+    
+    <navigation-rule>
+	    <from-view-id>/lista-tarefas.xhtml</from-view-id>
+	    <navigation-case>
+	        <from-outcome>tarefas</from-outcome>
+	        <to-view-id>/lista-tarefas.xhtml</to-view-id>
+	    </navigation-case>
+	    <navigation-case>
+	        <from-outcome>dono-info</from-outcome>
+	        <to-view-id>/sobre.xhtml</to-view-id>
+	    </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	    <from-view-id>/sobre.xhtml</from-view-id>
+	    <navigation-case>
+	        <from-outcome>tarefas</from-outcome>
+	        <to-view-id>/lista-tarefas.xhtml</to-view-id>
+	    </navigation-case>
+	    <navigation-case>
+	        <from-outcome>dono-info</from-outcome>
+	        <to-view-id>/sobre.xhtml</to-view-id>
+	    </navigation-case>
+	</navigation-rule>
 
 </faces-config>

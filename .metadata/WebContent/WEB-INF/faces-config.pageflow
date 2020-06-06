@@ -1,2 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pageflow:Pageflow xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15913346717860" configfile="/lista-tarefas/WebContent/WEB-INF/faces-config.xml"/>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15913346717860" configfile="/lista-tarefas/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" id="pf15914174501657" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" outlinks="pf159141757784312 pf159141781229815" inlinks="pf159141757784312 pf159141791599817" path="/lista-tarefas.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="sobre.xhtml" id="pf159141781229816" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" outlinks="pf159141791599817 pf159141791599818" inlinks="pf159141781229815 pf159141791599818" path="/sobre.xhtml"/>
+  <links id="pf159141757784312" target="pf15914174501657" source="pf15914174501657" outcome="tarefas"/>
+  <links id="pf159141781229815" target="pf159141781229816" source="pf15914174501657" outcome="dono-info"/>
+  <links id="pf159141791599817" target="pf15914174501657" source="pf159141781229816" outcome="tarefas"/>
+  <links id="pf159141791599818" target="pf159141781229816" source="pf159141781229816" outcome="dono-info"/>
+</pageflow:Pageflow>
